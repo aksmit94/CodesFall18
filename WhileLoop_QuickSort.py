@@ -33,7 +33,7 @@ def WhileLoop_Partition(a, left, right, pivot):
 	while(j < pivot - 1):
 	
 		#Comparing pivot to a[i]
-		##If a[j+!] > pivot, do nothing
+		##If a[j+1] > pivot, do nothing
 		if(a[pivot] < a[j + 1]):
 			j = j + 1
 		
