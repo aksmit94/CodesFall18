@@ -2,7 +2,7 @@
 
 ##Inputs: Left inclusive & Right exclusive
 ##Initial call:QuickSort(a,0,len(a))
-def QuickSort(a, left, right):
+def WhileLoop_QuickSort(a, left, right):
 
 	#Termination condition
 	if(right < left + 1):
@@ -12,13 +12,13 @@ def QuickSort(a, left, right):
 		pivot = right - 1
 		
 		#Call Partition
-		split = Partition(a, left, right, pivot)
+		split = WhileLoop_Partition(a, left, right, pivot)
 		
 		#Recursive calls
-		QuickSort(a, left, split)
-		QuickSort(a, split+1, right)
+		WhileLoop_QuickSort(a, left, split)
+		WhileLoop_QuickSort(a, split+1, right)
 	
-def Partition(a, left, right, pivot):
+def WhileLoop_Partition(a, left, right, pivot):
 	
 	##Following the general convention of breaking array into 3 partitions (apart from pivot): [[i]...[split]**[split+1]...[j]**[j+1]...**[pivot]]
 	##elements less than pivot -> i to split --- SmallArr partition
@@ -30,13 +30,13 @@ def Partition(a, left, right, pivot):
 	split = i
 	j = left - 1
 	
-	for j in range(left - 1, pivot - 1):
+	while(j < pivot - 1):
 	
-		#Comparing pivot to a[j+1]
+		#Comparing pivot to a[i]
 		##If a[j+!] > pivot, do nothing
 		if(a[pivot] < a[j + 1]):
-			continue
-			
+			j = j + 1
+		
 		##If a[i] < pivot, perform 3 steps
 		elif(a[pivot] > a[j + 1]):
 		
@@ -50,7 +50,7 @@ def Partition(a, left, right, pivot):
 			
 			##Step 3: increment j by 1 (j is the last element of LargeArr partition)
 			##########Since we just put the first element from this partition to the last, we need to increment index value of last element i.e. j
-			###Already done by the for loop
+			j = j + 1
 	
 	#Place pivot element at correct (index = split) position:
 	##Done by swapping pivot element with first element of LargeArr partition
